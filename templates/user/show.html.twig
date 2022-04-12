@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User{% endblock %}
+
+{%  block stylesheets %}<link rel="stylesheet" href="{{ asset("css/user/show.css") }}">{% endblock %}
+{% block body %}
+    <header>
+        <div id="informations">
+            <div id="profile-picture">
+                <img  alt="photo de profile" src="{% if user.profilePicture%}{{ asset(user.profilePicture) }}{% else %}{{ asset("img/profile picture/0.png") }}{% endif %}">
+            </div>
+            <p>{{ user.publicationNumber }}<br>Publications</p>
+            <p>{{ user.followerNumber}} <br>Abonnés</p>
+            <p>{{ user.followNumber}} <br>Abonnemements</p>
+        </div>
+        <div id="biographie">
+            <p>{{ user.username }}</p>
+            <p>{{ user.biography }}</p>
+        </div>
+        <div id="buttons">
+            {% if app.user %}
+                {% if user.id != app.user.id %}
+                    <a class="button {% if isFollow %} r {% endif %}" href="{{ path("app_user_follow",{
+                        id:user.id
+                    }) }}">{% if isFollow %} se désabonner {% else %} s'abonner{% endif %}</a>
+                {% else %}
+                    <a class="button" href="{{ path('app_publication_new') }}">créer post</a>
+                    <a class="button" href="{{ path('app_user_edit', {'id': user.id}) }}">Paramètres</a>
+                {% endif %}
+            {% endif %}
+        </div>
+    </header>
+    <p id="titrePublication">Publications</p>
+    <div id="posts">
+        {{ render(controller("App\\Controller\\PublicationController::index",{
+            "id": user.id
+        })) }}
+    </div>
+
+
+
+{#    {{ include('user/_delete_form.html.twig') }}#}
+{% endblock %}

@@ -1,0 +1,69 @@
+#user_profile{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#user_profile div{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#user_profile input,textarea{
+    border-bottom: 2px;
+    border: 1px #414141 solid;
+    padding: 5px;
+    font-size: 1.2em;
+}
+
+#user_profile textarea{
+    resize: none;
+    height: 110px;
+}
+#user_profile label{
+    font-size: 1.2em;
+}
+
+.btn{
+    font-size: 1em;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #fff;
+    background-color: #414141;
+}
+
+.btn:hover{
+    cursor: pointer;
+}
+
+form[name="user_profile"]{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+form[name="user_profile"] button{
+    margin-top: 20px;
+    background-color: mediumseagreen;
+}
+
+#buttonPanel{
+    display: flex;
+    flex-direction: row;
+    margin-top: 25px;
+    justify-content: space-between;
+    border-top: 1px solid #414141;
+    padding: 15px;
+}
+
+#buttonPanel .btn{
+    background-color: #ea5e5b;
+}
+
+h2{
+    margin-bottom: 20px;
+}

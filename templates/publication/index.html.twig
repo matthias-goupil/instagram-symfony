@@ -1,0 +1,7 @@
+{% for publication in publications %}
+    <a href="{{ path("app_publication_show",{
+        id: publication.id
+    }) }}"><img alt="publication de {{ publication.user.username }}" src="{{ asset(publication.photo) }}"></a>
+{% else %}
+<p>Pas de publications</p>
+{% endfor %}

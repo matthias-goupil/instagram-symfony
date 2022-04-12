@@ -1,0 +1,6 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn">{{ button_label|default('S\'inscrire') }}</button>
+<p>OU</p>
+<a class="btn" href="{{ path('app_login') }}">Se connecter</a>
+{{ form_end(form) }}

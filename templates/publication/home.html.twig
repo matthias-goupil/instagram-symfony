@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Publication{% endblock %}
+{%  block stylesheets %}<link rel="stylesheet" href="{{ asset("css/publication/home.css") }}">{% endblock %}
+
+{% block body %}
+    <h2>Fil d'actualité</h2>
+
+    {% for publication in publications %}
+        <div class="publication" id="{{ publication[0].id }}">
+            <div id="user">
+                <a id="lienProfile" href="{{ path("app_user_show",{
+                    id: publication[0].user.id
+                }) }}">
+                    <div id="profile-picture">
+                        <img  alt="photo de profile" src="{% if publication[0].user.profilePicture%}{{ asset(publication[0].user.profilePicture) }}{% else %}{{ asset("img/profile picture/0.png") }}{% endif %}">
+                    </div>
+                    <p>{{ publication[0].user.username }}</p>
+                </a>
+            </div>
+            <img id="photo" src="{{ asset(publication[0].photo) }}">
+            <p>{{ publication[0].likeNumber }} j'aime</p>
+            <a href="{{ path("app_publication_like",{
+                id:publication[0].id
+            }) }}"><img class="like" alt="{% if publication[1] %} aimer {% else %} ne plus aimer {% endif%} " src="{% if publication[1] %} {{  asset("img/icons/like.svg") }} {% else %} {{  asset("img/icons/unlike.svg") }} {% endif %}"></a>
+            <a href="{{ path("app_publication_show",{
+                id: publication[0].id
+            }) }}"><img class="comment" alt="Voir les commentaires" src="{{ asset("img/icons/comment.svg") }}"></a>
+        </div>
+    {% else %}
+        <p>Aucune publication n'a été publié par vos abonnements</p>
+    {% endfor %}
+
+
+{% endblock %}

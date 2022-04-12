@@ -1,0 +1,85 @@
+#photo{
+    border-radius: 5px;
+}
+#profile-picture{
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+#profile-picture img{
+    height: 50px;
+}
+
+#lienProfile{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+#user{
+    margin-bottom: 15px;
+    border-bottom: 1px solid #414141;
+    padding-bottom: 10px;
+}
+
+#comments{
+    background-color: #e1e1e1;
+    border-radius: 5px;
+    height: 100px;
+    padding: 20px;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+}
+
+#imgLike{
+    width: 40px;
+}
+
+#buttons{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+form[name="comment_form"]{
+    background-color: #414141;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+form[name="comment_form"] div {
+    width: 100%;
+}
+form[name="comment_form"] label{
+    display: none;
+}
+
+form[name="comment_form"] input{
+    border: 2px solid #fff;
+    background-color: transparent;
+    border-radius: 5px;
+    padding: 10px 5px;
+    color: #fff;
+    width: 100%;
+}
+
+form[name="comment_form"] button{
+    margin-top: 20px;
+    padding: 5px 10px;
+    background-color: #5eb5e0;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+}

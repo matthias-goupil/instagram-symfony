@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit User{% endblock %}
+{%  block stylesheets %}<link rel="stylesheet" href="{{ asset("css/user/edit.css") }}">{% endblock %}
+
+{% block body %}
+    <h2>Paramètres de compte</h2>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn">Enregistrer</button>
+    {{ form_end(form) }}
+<div id="buttonPanel">
+    {{ include('user/_delete_form.html.twig') }}
+    <a class="btn" href="{{ path("app_logout") }}">Déconnexion</a>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Publication{% endblock %}
+{%  block stylesheets %}<link rel="stylesheet" href="{{ asset("css/publication/show.css") }}">{% endblock %}
+
+{% block body %}
+    <div id="user">
+        <a id="lienProfile" href="{{ path("app_user_show",{
+            id: user.id
+        }) }}">
+            <div id="profile-picture">
+                <img  alt="photo de profile" src="{% if user.profilePicture%}{{ asset(user.profilePicture) }}{% else %}{{ asset("img/profile picture/0.png") }}{% endif %}">
+            </div>
+            <p>{{ user.username }}</p>
+        </a>
+    </div>
+    <img id="photo" src="{{ asset(publication.photo) }}">
+    <p>{{ publication.likeNumber }} j'aime</p>
+
+    <div id="buttons">
+        <a href="{{ path("app_publication_like",{
+            id:publication.id
+        }) }}"><img id="imgLike" alt="{% if isLikeByUser %} aimer {% else %} ne plus aimer {% endif%} " src="{% if isLikeByUser %} {{  asset("img/icons/like.svg") }} {% else %} {{  asset("img/icons/unlike.svg") }} {% endif %}"></a>
+        {% if app.user.id == publication.user.id %}
+            {{ include("publication/_delete_form.html.twig") }}
+        {% endif %}
+    </div>
+
+    <div id="comments">
+        {% for comment in comments %}
+            <p class="comment">{{ comment.user.username }} :  {{ comment.content }}</p>
+        {% else %}
+            <p>Aucun commentaire</p>
+        {% endfor %}
+    </div>
+
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn">Envoyer</button>
+        {{ form_end(form) }}
+{#    {{ include('publication/_delete_form.html.twig') }}#}
+{% endblock %}
